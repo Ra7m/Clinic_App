@@ -11,45 +11,56 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
+  GlobalKey<FormState> formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      key: formkey,
       child: Scaffold(
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Column(
-              children: [
-                customTextField(
-                    'UserName',
-                    Color.fromARGB(255, 21, 50, 100),
-                    18,
-                    Colors.grey,
-                    Colors.grey,
-                    Color.fromARGB(255, 21, 50, 100),
-                    Icons.person),
-                SizedBox(
-                  height: 30,
-                ),
-                customTextField(
-                    'Password',
-                    Color.fromARGB(255, 21, 50, 100),
-                    18,
-                    Colors.grey,
-                    Colors.grey,
-                    Color.fromARGB(255, 21, 50, 100),
-                    Icons.lock),
-                SizedBox(
-                  height: 30,
-                ),
-                customButton(
-                    'Login', Color.fromARGB(255, 21, 50, 100), Colors.white,
-                    () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const Homepage();
-                  }));
-                })
-              ],
+        body: Form(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Column(
+                children: [
+                  customTextField(
+                      'UserName',
+                      Color.fromARGB(255, 21, 50, 100),
+                      18,
+                      Colors.grey,
+                      Colors.grey,
+                      Color.fromARGB(255, 21, 50, 100),
+                      Icons.person),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  customTextField(
+                      'Password',
+                      Color.fromARGB(255, 21, 50, 100),
+                      18,
+                      Colors.grey,
+                      Colors.grey,
+                      Color.fromARGB(255, 21, 50, 100),
+                      Icons.lock),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  customButton(
+                      'Login', Color.fromARGB(255, 21, 50, 100), Colors.white,
+                      () {
+                    if (formkey.currentState!.validate()) {
+                      print('valid');
+                    } else {
+                      print('not valid');
+                    }
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const Homepage();
+                      }));
+                    }
+                  )
+                ],
+              ),
             ),
           ),
         ),

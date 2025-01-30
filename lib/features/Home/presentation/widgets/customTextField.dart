@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
 
-TextFormField customTextField(String labelText, Color labelcolor, double radius,
-    Color sidecolor, Color enablecolor, Color focuscolor, IconData? perfixicon) {
- 
+TextFormField customTextField(
+    String labelText,
+    Color labelcolor,
+    double radius,
+    Color sidecolor,
+    Color enablecolor,
+    Color focuscolor,
+    IconData? perfixicon) {
   return TextFormField(
+    autovalidateMode: AutovalidateMode.onUnfocus,
+    validator: (value) {
+      if (value!.isEmpty) {
+        return 'Please enter your $labelText';
+      }
+      if (labelText == 'Email') {
+        if (!value.contains('@')) {
+          return 'Please enter a valid email';
+        }
+      }
+      if (labelText == 'Password' || labelText == 'Confirm Password') {
+        if (value.length < 6) {
+          return 'Password must be at least 6 characters';
+        }
+      }
+      if (labelText == 'Confirm Password') {
+        if (value != 'Password') {
+          return 'Password does not match';
+        }
+      }
+      return null;
+    },
     obscureText: labelText == 'Password' ? true : false,
     decoration: InputDecoration(
       prefixIcon: Icon(perfixicon),
-            suffixIcon: labelText == 'Password' || labelText == 'Confirm Password' ? Icon(Icons.visibility) : null,
+      suffixIcon: labelText == 'Password' || labelText == 'Confirm Password'
+          ? Icon(Icons.visibility)
+          : null,
       labelText: labelText,
       labelStyle: TextStyle(
         color: labelcolor,

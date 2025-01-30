@@ -1,3 +1,4 @@
+import 'package:clinic_app/features/Home/presentation/pages/homepage.dart';
 import 'package:clinic_app/features/Home/presentation/widgets/customTextField.dart';
 import 'package:clinic_app/features/Home/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,9 @@ class _LoginpageState extends State<Loginpage> {
                 customButton(
                     'Login', Color.fromARGB(255, 21, 50, 100), Colors.white,
                     () {
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const Homepage();
+                  }));
                 })
               ],
             ),
@@ -52,6 +55,5 @@ class _LoginpageState extends State<Loginpage> {
         ),
       ),
     );
-    ;
   }
 }

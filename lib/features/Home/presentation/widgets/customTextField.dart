@@ -25,8 +25,8 @@ TextFormField customTextField(
         }
       }
       if (labelText == 'Password' || labelText == 'Confirm Password') {
-        if (value.length < 6 && value.startsWith(RegExp(r'[A-Z]'))) {
-          return 'Password must be at least 6 characters and start with a capital letter';
+        if (value.length < 6) {
+          return 'Password must be at least 6 ';
         }
       }
       if (labelText == 'Confirm Password') {

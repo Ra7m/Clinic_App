@@ -112,7 +112,8 @@ class _LoginpageState extends State<Registerpage> {
                               : const Icon(
                                   Icons.visibility_off,
                                 )),
-                      TextInputType.visiblePassword,visible2),
+                      TextInputType.visiblePassword,
+                      visible2),
                   SizedBox(
                     height: 30,
                   ),

@@ -24,7 +24,7 @@ class _LoginpageState extends State<Registerpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('Register Page', Colors.white, true),
+      appBar: customAppBar('Register Page', Colors.white, true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(26.0),

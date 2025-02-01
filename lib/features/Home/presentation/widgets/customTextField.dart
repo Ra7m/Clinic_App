@@ -7,8 +7,13 @@ TextFormField customTextField(
     Color sidecolor,
     Color enablecolor,
     Color focuscolor,
-    IconData? perfixicon) {
+    IconData? perfixicon,
+    TextEditingController controller,
+    dynamic suffix,
+    TextInputType keytype,
+    bool obscureText) {
   return TextFormField(
+    controller: controller,
     autovalidateMode: AutovalidateMode.onUnfocus,
     validator: (value) {
       if (value!.isEmpty) {
@@ -20,7 +25,7 @@ TextFormField customTextField(
         }
       }
       if (labelText == 'Password' || labelText == 'Confirm Password') {
-        if (value.length < 6 && value.startsWith(RegExp(r'[A-Z]')) ) {
+        if (value.length < 6 && value.startsWith(RegExp(r'[A-Z]'))) {
           return 'Password must be at least 6 characters and start with a capital letter';
         }
       }
@@ -31,11 +36,12 @@ TextFormField customTextField(
       }
       return null;
     },
-    obscureText: labelText == 'Password' ? true : false,
+    keyboardType: keytype,
+    obscureText: obscureText,
     decoration: InputDecoration(
       prefixIcon: Icon(perfixicon),
       suffixIcon: labelText == 'Password' || labelText == 'Confirm Password'
-          ? Icon(Icons.visibility)
+          ? suffix
           : null,
       labelText: labelText,
       labelStyle: TextStyle(

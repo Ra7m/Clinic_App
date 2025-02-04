@@ -1,3 +1,4 @@
+import 'package:clinic_app/core/validator.dart';
 import 'package:clinic_app/features/Home/presentation/pages/RegisterPage.dart';
 import 'package:clinic_app/features/Home/presentation/pages/homepage.dart';
 import 'package:clinic_app/features/Home/presentation/widgets/customTextField.dart';
@@ -41,7 +42,10 @@ class _LoginpageState extends State<Loginpage> {
                       name,
                       null,
                       TextInputType.text,
-                      false),
+                      false,
+                       (value) {
+                      return MyValidators.displayNameValidator(value);
+                    },),
                   SizedBox(
                     height: 30,
                   ),
@@ -67,7 +71,10 @@ class _LoginpageState extends State<Loginpage> {
                                   Icons.visibility_off,
                                 )),
                       TextInputType.visiblePassword,
-                      visible),
+                      visible,
+                      (value) {
+                      return MyValidators.passwordValidator(value);
+                    },),
                   SizedBox(
                     height: 30,
                   ),

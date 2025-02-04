@@ -1,4 +1,4 @@
-
+import 'package:clinic_app/core/validator.dart';
 import 'package:clinic_app/features/Home/presentation/pages/LoginPage.dart';
 import 'package:clinic_app/features/Home/presentation/widgets/customTextField.dart';
 import 'package:clinic_app/features/Home/presentation/widgets/customappbar.dart';
@@ -24,7 +24,11 @@ class _LoginpageState extends State<Registerpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('Register Page', Colors.white, true,),
+      appBar: customAppBar(
+        'Register Page',
+        Colors.white,
+        true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(26.0),
@@ -44,23 +48,30 @@ class _LoginpageState extends State<Registerpage> {
                     name,
                     null,
                     TextInputType.text,
-                    false
+                    false,
+                    (value) {
+                      return MyValidators.displayNameValidator(value);
+                    },
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   customTextField(
-                      'Email',
-                      Color.fromARGB(255, 21, 50, 100),
-                      18,
-                      Colors.grey,
-                      Colors.grey,
-                      Color.fromARGB(255, 21, 50, 100),
-                      Icons.email,
-                      email,
-                      null,
-                      TextInputType.emailAddress,
-                      false),
+                    'Email',
+                    Color.fromARGB(255, 21, 50, 100),
+                    18,
+                    Colors.grey,
+                    Colors.grey,
+                    Color.fromARGB(255, 21, 50, 100),
+                    Icons.email,
+                    email,
+                    null,
+                    TextInputType.emailAddress,
+                    false,
+                    (value) {
+                      return MyValidators.emailValidator(value);
+                    },
+                  ),
                   SizedBox(
                     height: 30,
                   ),
@@ -86,34 +97,41 @@ class _LoginpageState extends State<Registerpage> {
                                 Icons.visibility_off,
                               )),
                     TextInputType.visiblePassword,
-                    visible1
+                    visible1,
+                    (value) {
+                      return MyValidators.passwordValidator(value);
+                    },
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   customTextField(
-                      'Confirm Password',
-                      Color.fromARGB(255, 21, 50, 100),
-                      18,
-                      Colors.grey,
-                      Colors.grey,
-                      Color.fromARGB(255, 21, 50, 100),
-                      Icons.password,
-                      confirmpassword,
-                      IconButton(
-                          onPressed: () {
-                            visible2 = !visible2;
-                            setState(() {});
-                          },
-                          icon: visible2 == false
-                              ? const Icon(
-                                  Icons.remove_red_eye,
-                                )
-                              : const Icon(
-                                  Icons.visibility_off,
-                                )),
-                      TextInputType.visiblePassword,
-                      visible2),
+                    'Confirm Password',
+                    Color.fromARGB(255, 21, 50, 100),
+                    18,
+                    Colors.grey,
+                    Colors.grey,
+                    Color.fromARGB(255, 21, 50, 100),
+                    Icons.password,
+                    confirmpassword,
+                    IconButton(
+                        onPressed: () {
+                          visible2 = !visible2;
+                          setState(() {});
+                        },
+                        icon: visible2 == false
+                            ? const Icon(
+                                Icons.remove_red_eye,
+                              )
+                            : const Icon(
+                                Icons.visibility_off,
+                              )),
+                    TextInputType.visiblePassword,
+                    visible2,
+                    (value) {
+                      return MyValidators.repeatPasswordValidator(labelText: 'Confirm Password', value: value, password: password.text);
+                    },
+                  ),
                   SizedBox(
                     height: 30,
                   ),

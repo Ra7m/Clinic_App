@@ -11,31 +11,32 @@ TextFormField customTextField(
     TextEditingController controller,
     dynamic suffix,
     TextInputType keytype,
-    bool obscureText) {
+    bool obscureText, dynamic validate) {
   return TextFormField(
     controller: controller,
     autovalidateMode: AutovalidateMode.onUnfocus,
-    validator: (value) {
-      if (value!.isEmpty) {
-        return 'Please enter your $labelText';
-      }
-      if (labelText == 'Email') {
-        if (!value.contains('@')) {
-          return 'Please enter a valid email';
-        }
-      }
-      if (labelText == 'Password' || labelText == 'Confirm Password') {
-        if (value.length < 6) {
-          return 'Password must be at least 6 ';
-        }
-      }
-      if (labelText == 'Confirm Password') {
-        if (value != 'Password') {
-          return 'Password does not match';
-        }
-      }
-      return null;
-    },
+    validator:validate,
+    //  (value) {
+    //   if (value!.isEmpty) {
+    //     return 'Please enter your $labelText';
+    //   }
+    //   if (labelText == 'Email') {
+    //     if (!value.contains('@')) {
+    //       return 'Please enter a valid email';
+    //     }
+    //   }
+    //   if (labelText == 'Password' || labelText == 'Confirm Password') {
+    //     if (value.length < 6) {
+    //       return 'Password must be at least 6 ';
+    //     }
+    //   }
+    //   if (labelText == 'Confirm Password') {
+    //     if (value != 'Password') {
+    //       return 'Password does not match';
+    //     }
+    //   }
+    //   return null;
+    // },
     keyboardType: keytype,
     obscureText: obscureText,
     decoration: InputDecoration(

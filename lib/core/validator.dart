@@ -3,10 +3,10 @@ class MyValidators {
 
   static String? displayNameValidator(String? displayName) {
     if (displayName == null || displayName.isEmpty) {
-      return 'Display name cannot be empty';
+      return 'Please enter your name';
     }
-    if (displayName.length < 3 || displayName.length > 20) {
-      return 'Display name must be between 3 and 20 characters';
+    if (displayName.length < 3 || displayName.length > 15) {
+      return ' name must be between 3 and 15characters';
     }
 
     return null;
@@ -42,5 +42,4 @@ class MyValidators {
     }
     return null;
   }
-  
 }

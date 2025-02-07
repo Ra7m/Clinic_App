@@ -22,13 +22,21 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('Login Page', Colors.white, true),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(26.0),
-          child: Form(
-            key: formkey,
-            child: Center(
+      appBar: customAppBar('Login Page',         Color.fromARGB(255, 219, 245, 241),
+ true),
+      body: Form(
+        key: formkey,
+        child: Center(
+          child: Stack(
+            children:[ 
+              Image(
+                image: AssetImage('assets/images/iimg1.jpg'),
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              Padding(
+              padding: const EdgeInsets.all(28.0),
               child: Column(
                 children: [
                   customTextField(
@@ -109,7 +117,7 @@ class _LoginpageState extends State<Loginpage> {
                 ],
               ),
             ),
-          ),
+          ]),
         ),
       ),
     );

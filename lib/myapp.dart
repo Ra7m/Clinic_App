@@ -1,5 +1,6 @@
 import 'package:clinic_app/features/Home/presentation/pages/homepage.dart';
 import 'package:clinic_app/features/Home/presentation/widgets/customsinglescroll.dart';
+import 'package:clinic_app/mapclass.dart';
 import 'package:clinic_app/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Homepage(),
+      home:Tabpag(text: 'text',icon:  Icon(Icons.category)),
+      
+      //  Homepage(),
       // Customslider(),
 
       //  SplashScreen(),
